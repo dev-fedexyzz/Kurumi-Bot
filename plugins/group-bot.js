@@ -19,7 +19,7 @@ export async function before(m, { conn}) {
 
     // 📜 Si escriben "reglas"
     if (/^reglas$/i.test(m.text)) {
-        const reglas = `🌐 *REGLAS DEL BOT SHADOW* 🌐
+        const reglas = `🌐 *REGLAS DEL BOT PARA* 🌐
 
 1️⃣ No hacer spam de comandos
 2️⃣ No enviar enlaces sin permiso
@@ -32,7 +32,7 @@ export async function before(m, { conn}) {
 9️⃣ No intentes forzar comandos ocultos
 🔟 Recuerda: el bot observa... siempre.
 
-🕶️ *La oscuridad no tolera el caos. Respeta las reglas y serás escuchado.*`;
+🕶️ *respeta las reglas y serás respetado.*`;
 
         await conn.sendMessage(
             m.chat,
@@ -50,7 +50,7 @@ export async function before(m, { conn}) {
     if (hasKeyword) {
         return conn.reply(
             m.chat,
-            `👋 *Hola soy Shadow.*\nUsa *.menu* para ver mi lista de comandos.`,
+            `👋 *Hola soy Kurumi-Bot.*\nUsa *.menu* para ver mi lista de comandos.`,
             m
 );
 }
