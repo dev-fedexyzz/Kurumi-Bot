@@ -1,7 +1,7 @@
 {
 "name": "Kurumi-Bot",
 "version": "1.3.2",
-"description": "KurumiBot Multi–Device",
+"description": "Kurumi Bot Multi–Device",
 "main": "index.js",
 "type": "module",
 "directories": {
