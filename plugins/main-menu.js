@@ -12,7 +12,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let saludo = getSaludo();
-  let perfil = 'https://files.catbox.moe/c65bk7.jpg';
+  let imagen = 'https://files.catbox.moe/c65bk7.jpg'; // imagen.jpg
 
   let tags = {
     'main': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕ ᦡᦡ',
@@ -34,7 +34,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let user = global.db.data.users[m.sender];
   let premium = user.premium? '𝗌𝗂': '𝗇𝗈';
-  let limit = user.limit || 0;
   let totalreg = Object.keys(global.db.data.users).length;
   let groupsCount = Object.values(conn.chats).filter(v => v.id.endsWith('@g.us')).length;
   let uptime = clockString(process.uptime());
@@ -47,17 +46,15 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let infoUser = `
-ര ׄ 🍒 *_𝖧𝗈𝗅𝖺!¡⁩ 𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽@_* ⁩| *_𝖲𝗈𝗒 𝗄𝗎𝗋𝗎𝗆𝗂 𝗆𝖽_* *_꒰ ☕ ꒱_*
+🍒 *_Bienvenid@ ${nombre}_*
 ──────────────────────
 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
 🍉 *_Premium_*:: ${premium}
-⏳ *_Tiempo_*:: ${uptime}
-🎋 *_Usuarios_*:: ${totalreg}
-☁️ *_Activos_*:: ${groupsCount}
-🎲 *_Tipo_*:: *_𝗉𝗅𝗎𝗀𝗂𝗇𝗌_*
-🌾 *_Estado_*:: ${(conn.user.jid == global.conn.user.jid? '*_Principal_*': '*_Sub-Bots_*')}
-🌿 *_Comandos_*:: ${Object.keys(global.plugins).length}
-📡 *_Fecha_*:: \`${new Date().toLocaleString('es-ES')}\`
+⏳ *_Tiempo activo_*:: ${uptime}
+🎋 *_Usuarios registrados_*:: ${totalreg}
+☁️ *_Grupos activos_*:: ${groupsCount}
+🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
+📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
 ──────────────────────
 `.trim();
 
@@ -78,12 +75,12 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 }
 
-  let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
+  let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after + `\n🖼️ Imagen del menú: ${imagen}`;
 
   await m.react('🍮');
 
   await conn.sendMessage(m.chat, {
-    image: { url: perfil},
+    image: { url: imagen},
     caption: finalMenu,
     document: fs.readFileSync('./README.md'),
     fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
@@ -94,7 +91,7 @@ let handler = async (m, { conn, usedPrefix}) => {
       externalAdReply: {
         title: 'Kurumi bot',
         body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnailUrl: perfil,
+        thumbnailUrl: imagen,
         mediaType: 1,
         renderLargerThumbnail: false,
         showAdAttribution: false
