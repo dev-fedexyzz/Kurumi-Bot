@@ -12,9 +12,19 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let saludo = getSaludo();
+  let perfil = 'https://files.catbox.moe/c65bk7.jpg';
 
   let tags = {
     'main': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕ ᦡᦡ',
+    'fun': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ғᴜɴ`_* 🎭 ᦡᦡ',
+    'anime': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴀɴɪᴍᴇ`_* 🌸',
+    'descargas': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴅᴏᴡɴʟᴏᴀᴅ`_* 🎧 ᦡᦡ',
+    'grupo': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ɢʀᴜᴘᴏs`_* 🍒 ᦡᦡ',
+    'ia': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ɪᴀ`_* ☁️ ᦡᦡ',
+    'tools': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴛᴏᴏʟs`_* 🧩 ᦡᦡ',
+    'owner': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴏᴡɴᴇʀ`_* ⚙️ ᦡᦡ',
+    'serbot': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴊᴀᴅɪ-ʙᴏᴛ`_* ☕ ᦡᦡ',
+    'buscador': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ʙᴜsᴄᴀᴅᴏʀ`_* 🍑 ᦡᦡ',
 };
 
   let header = '%category';
@@ -39,13 +49,15 @@ let handler = async (m, { conn, usedPrefix}) => {
   let infoUser = `
 ര ׄ 🍒 *_𝖧𝗈𝗅𝖺!¡⁩ 𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽@_* ⁩| *_𝖲𝗈𝗒 𝗄𝗎𝗋𝗎𝗆𝗂 𝗆𝖽_* *_꒰ ☕ ꒱_*
 ──────────────────────
-> 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
-> 🍉 *_Premium_*:: ${premium}
-> ⏳ *_Tiempo_*:: ${uptime}
-> 🎋 *_Usuarios_*:: ${totalreg}
-> ☁️ *_Activos_*:: ${groupsCount}
-> 🍃 *_Comandos_*:: ${Object.keys(global.plugins).length}
-> 📡 *_Fecha_*:: \`${new Date().toLocaleString('es-ES')}\`
+📚 *_Usuario_*:: @${m.sender.split('@')[0]}
+🍉 *_Premium_*:: ${premium}
+⏳ *_Tiempo_*:: ${uptime}
+🎋 *_Usuarios_*:: ${totalreg}
+☁️ *_Activos_*:: ${groupsCount}
+🎲 *_Tipo_*:: *_𝗉𝗅𝗎𝗀𝗂𝗇𝗌_*
+🌾 *_Estado_*:: ${(conn.user.jid == global.conn.user.jid? '*_Principal_*': '*_Sub-Bots_*')}
+🌿 *_Comandos_*:: ${Object.keys(global.plugins).length}
+📡 *_Fecha_*:: \`${new Date().toLocaleString('es-ES')}\`
 ──────────────────────
 `.trim();
 
@@ -67,12 +79,11 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
-  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
 
   await m.react('🍮');
 
   await conn.sendMessage(m.chat, {
-    image: { url: imagen},
+    image: { url: perfil},
     caption: finalMenu,
     document: fs.readFileSync('./README.md'),
     fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
@@ -81,9 +92,9 @@ let handler = async (m, { conn, usedPrefix}) => {
       forwardingScore: 999,
       isForwarded: true,
       externalAdReply: {
-        title: 'Kurumi Bot',
+        title: 'Kurumi bot',
         body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnailUrl: imagen,
+        thumbnailUrl: perfil,
         mediaType: 1,
         renderLargerThumbnail: false,
         showAdAttribution: false
