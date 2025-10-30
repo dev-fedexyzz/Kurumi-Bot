@@ -362,15 +362,15 @@ export async function handler(chatUpdate) {
 
 global.dfail = (type, m, conn) => {
     const msg = {
-        rowner: `> 〄 El comando *${global.comando}* solo puede ser usado por los creadores del bot.`,
-        owner: `> 〄 El comando *${global.comando}* solo puede ser usado por los desarrolladores del bot.`,
-        mods: `> 〄 El comando *${global.comando}* solo puede ser usado por los moderadores del bot.`,
-        premium: `> 〄 El comando *${global.comando}* solo puede ser usado por los usuarios premium.`,
-        group: `> 〄 El comando *${global.comando}* solo puede ser usado en grupos.`,
-        private: `> 〄 El comando *${global.comando}* solo puede ser usado al chat privado del bot.`,
-        admin: `> 〄 El comando *${global.comando}* solo puede ser usado por los administradores del grupo.`,
-        botAdmin: `> 〄 Para ejecutar el comando *${global.comando}* debo ser administrador del grupo.`,
-        restrict: `> 〄 Esta característica está desactivada.`
+        rowner: `El comando *${global.comando}* solo puede ser usado por los creadores del bot.`,
+        owner: `El comando *${global.comando}* solo puede ser usado por los desarrolladores del bot.`,
+        mods: `El comando *${global.comando}* solo puede ser usado por los moderadores del bot.`,
+        premium: `El comando *${global.comando}* solo puede ser usado por los usuarios premium.`,
+        group: `El comando *${global.comando}* solo puede ser usado en grupos.`,
+        private: `El comando *${global.comando}* solo puede ser usado al chat privado del bot.`,
+        admin: `El comando *${global.comando}* solo puede ser usado por los administradores del grupo.`,
+        botAdmin: `Para ejecutar el comando *${global.comando}* debo ser administrador del grupo.`,
+        restrict: `Esta característica está desactivada.`
     }[type];
     if (msg) return conn.reply(m.chat, msg, m).then(() => m.react('✖️'));
 };
