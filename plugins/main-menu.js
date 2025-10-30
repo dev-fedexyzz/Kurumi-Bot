@@ -38,7 +38,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
 ──────────────────────
-🖼️ *Imagen del menú:* ${imagen}
 `.trim();
 
   let tags = {
