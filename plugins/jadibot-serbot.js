@@ -55,7 +55,7 @@ if (!fs.existsSync(pathKurumiJadiBot)){
 fs.mkdirSync(pathKurumiJadiBot, { recursive: true })
 }
 KurumiJBOptions.pathKurumiJadiBot = pathKurumiJadiBot
-KurumiJBOptions. = m
+KurumiJBOptions.m = m
 KurumiJBOptions.conn = conn
 KurumiJBOptions.args = args
 KurumiJBOptions.usedPrefix = usedPrefix
