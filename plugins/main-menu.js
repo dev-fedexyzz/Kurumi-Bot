@@ -12,26 +12,8 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let saludo = getSaludo();
-  let imagen = 'https://files.catbox.moe/c65bk7.jpg'; // imagen.jpg
-
-  let tags = {
-    'main': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕ ᦡᦡ',
-    'fun': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ғᴜɴ`_* 🎭 ᦡᦡ',
-    'anime': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴀɴɪᴍᴇ`_* 🌸',
-    'descargas': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴅᴏᴡɴʟᴏᴀᴅ`_* 🎧 ᦡᦡ',
-    'grupo': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ɢʀᴜᴘᴏs`_* 🍒 ᦡᦡ',
-    'ia': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ɪᴀ`_* ☁️ ᦡᦡ',
-    'tools': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴛᴏᴏʟs`_* 🧩 ᦡᦡ',
-    'owner': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴏᴡɴᴇʀ`_* ⚙️ ᦡᦡ',
-    'serbot': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴊᴀᴅɪ-ʙᴏᴛ`_* ☕ ᦡᦡ',
-    'buscador': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ʙᴜsᴄᴀᴅᴏʀ`_* 🍑 ᦡᦡ',
-};
-
-  let header = '%category';
-  let body = '> ര ׄ ☕ ׅ *_%cmd_*';
-  let footer = '';
-  let after = ``;
-
+  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
+  
   let user = global.db.data.users[m.sender];
   let premium = user.premium? '𝗌𝗂': '𝗇𝗈';
   let totalreg = Object.keys(global.db.data.users).length;
@@ -56,7 +38,26 @@ let handler = async (m, { conn, usedPrefix}) => {
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
 ──────────────────────
+🖼️ *Imagen del menú:* ${imagen}
 `.trim();
+
+  let tags = {
+    'main': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕',
+    'fun': '𓂂𓏸 *_`ᴍᴇɴᴜ ғᴜɴ`_* 🎭',
+    'anime': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴀɴɪᴍᴇ`_* 🌸',
+    'descargas': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴅᴏᴡɴʟᴏᴀᴅ`_* 🎧',
+    'grupo': '𓂂𓏸 *_`ᴍᴇɴᴜ ɢʀᴜᴘᴏs`_* 🍒',
+    'ia': '𓂂𓏸 *_`ᴍᴇɴᴜ ɪᴀ`_* ☁️',
+    'tools': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴛᴏᴏʟs`_* 🧩',
+    'owner': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴏᴡɴᴇʀ`_* ⚙️',
+    'serbot': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴊᴀᴅɪ-ʙᴏᴛ`_* ☕',
+    'buscador': '𓂂𓏸 *_`ᴍᴇɴᴜ ʙᴜsᴄᴀᴅᴏʀ`_* 🍑',
+};
+
+  let header = '%category';
+  let body = '> ☕ *_%cmd_*';
+  let footer = '';
+  let after = '';
 
   let commands = Object.values(global.plugins).filter(v => v.help && v.tags && v.command).map(v => ({
     help: Array.isArray(v.help)? v.help: [v.help],
@@ -75,7 +76,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 }
 
-  let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after + `\n🖼️ Imagen del menú: ${imagen}`;
+  let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
 
   await m.react('🍮');
 
