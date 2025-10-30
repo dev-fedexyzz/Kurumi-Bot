@@ -118,7 +118,7 @@ try { sock.ws?.close() } catch {}
 sock.ev.removeAllListeners()
 let i = global.conns.indexOf(sock)
 if (i >= 0) global.conns.splice(i, 1)
-console.log(`[AUTO-LIMPIEZA] Sesión ${path.basename(pathKurumiJadiBot)} eliminada credenciales invalidos.`)
+console.log(`[LIMPIEZA AUTOMÁTICA] Sesión ${path.basename(pathKurumiJadiBot)} eliminada credenciales invalidos.`)
 }}, 60000)
 async function connectionUpdate(update) {
 const { connection, lastDisconnect, isNewLogin, qr } = update
