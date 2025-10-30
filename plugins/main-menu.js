@@ -13,7 +13,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let saludo = getSaludo();
   let imagen = 'https://files.catbox.moe/c65bk7.jpg';
-  
+
   let user = global.db.data.users[m.sender];
   let premium = user.premium? '𝗌𝗂': '𝗇𝗈';
   let totalreg = Object.keys(global.db.data.users).length;
@@ -81,7 +81,7 @@ let handler = async (m, { conn, usedPrefix}) => {
   await m.react('🍮');
 
   await conn.sendMessage(m.chat, {
-    image: { url: imagen},
+    image: { url: imagen}, // imagen visible arriba
     caption: finalMenu,
     document: fs.readFileSync('./README.md'),
     fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
@@ -92,7 +92,7 @@ let handler = async (m, { conn, usedPrefix}) => {
       externalAdReply: {
         title: 'Kurumi bot',
         body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnailUrl: imagen,
+        thumbnailUrl: imagen, // imagen como perfil
         mediaType: 1,
         renderLargerThumbnail: false,
         showAdAttribution: false
