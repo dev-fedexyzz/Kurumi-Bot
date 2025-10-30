@@ -82,7 +82,7 @@ let handler = async (m, { conn, usedPrefix}) => {
       isForwarded: true,
       externalAdReply: {
         title: 'Kurumi Bot',
-        body: `𝖧𝗈𝗅𝖺 ${nombre} ${saludo}`,
+        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
         thumbnailUrl: imagen,
         mediaType: 1,
         renderLargerThumbnail: false,
