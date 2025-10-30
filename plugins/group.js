@@ -10,16 +10,14 @@ const handler = async (m, { command, conn}) => {
     // Selecciona un meme aleatorio
     const memeUrl = memes[Math.floor(Math.random() * memes.length)];
 
-    // Reacciona al mensaje del usuario con un emoji de fuego
     await conn.sendMessage(m.chat, { react: { text: '🔥', key: m.key}});
 
-    // Envía el meme con botón interactivo
     await conn.sendMessage(m.chat, {
       image: { url: memeUrl},
-      caption: '🧠 Aquí tienes un meme desde las sombras...',
-      footer: '¿Quieres otro?',
+      caption: '👻 Aquí tienes un meme...',
+      footer: 'Kurumi - Memes',
       buttons: [
-        { buttonId: '.meme', buttonText: { displayText: 'Siguiente meme 🔁'}, type: 1}
+        { buttonId: '.meme', buttonText: { displayText: 'Siguiente'}, type: 1}
       ],
       headerType: 4
 }, { quoted: m});
