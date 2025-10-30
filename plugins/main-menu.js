@@ -92,7 +92,9 @@ let handler = async (m, { conn, usedPrefix}) => {
         thumbnailUrl: imagen,
         mediaType: 1,
         renderLargerThumbnail: false,
-        showAdAttribution: false
+        showAdAttribution: false,
+        channelRD: '120363424055815484@newsletter',
+        channelName: 'Kurumi Channel Official'
 }
 }
 }, { quoted: m});
