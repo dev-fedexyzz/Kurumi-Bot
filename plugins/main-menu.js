@@ -48,16 +48,13 @@ let handler = async (m, { conn, usedPrefix}) => {
   let infoUser = `
 ര ׄ 🍒 *_𝖧𝗈𝗅𝖺!¡⁩ 𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽@_* ⁩| *_𝖲𝗈𝗒 𝗄𝗎𝗋𝗎𝗆𝗂 𝗆𝖽_* *_꒰ ☕ ꒱_*
 ──────────────────────
-📚 *_Usuario_* :: @${m.sender.split('@')[0]}
-🍉 *_Premium_* :: ${premium}
-⏳ *_Tiempo_* :: ${uptime}
-🎋 *_Usuarios_* :: ${totalreg}
-☁️ *_Activos_* :: ${groupsCount}
-🎲 *_Tipo_* :: *_𝗉𝗅𝗎𝗀𝗂𝗇𝗌_*
-──────────────────────
-🌾 *_Estado_* :: ${(conn.user.jid == global.conn.user.jid? '*_Principal_*': '*_Sub-Bots_*')}
-🌿 *_Comandos_* :: ${Object.keys(global.plugins).length}
-📡 *_Fecha_* :: \`${new Date().toLocaleString('es-ES')}\`
+> 📚 *_Usuario_* :: @${m.sender.split('@')[0]}
+> 🍉 *_Premium_* :: ${premium}
+> ⏳ *_Tiempo_* :: ${uptime}
+> 🎋 *_Usuarios_* :: ${totalreg}
+> ☁️ *_Activos_* :: ${groupsCount}
+> 🍃 *_Comandos_* :: ${Object.keys(global.plugins).length}
+> 📡 *_Fecha_* :: \`${new Date().toLocaleString('es-ES')}\`
 ──────────────────────
 `.trim();
 
