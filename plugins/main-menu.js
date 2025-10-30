@@ -55,7 +55,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 ☁️ *_Grupos activos_*:: ${groupsCount}
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
-──────────────────────
 `.trim();
 
   let commands = Object.values(global.plugins).filter(v => v.help && v.tags && v.command).map(v => ({
