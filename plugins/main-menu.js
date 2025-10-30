@@ -47,15 +47,15 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let infoUser = `
 🍒 *_Bienvenid @${nombre}_*
-╭────────────────────
+──────────────────────
 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
-☕ *_Baileys_* :: *fedExz-Bails*
+☕ *_Baileys_* :: *_fedExz-Bails_*
 🍉 *_Premium_*:: ${premium}
 ⏳ *_Tiempo activo_*:: ${uptime} 
 ☁️ *_Grupos activos_*:: ${groupsCount}
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
-╰────────────────────
+──────────────────────
 `.trim();
 
   let commands = Object.values(global.plugins).filter(v => v.help && v.tags && v.command).map(v => ({
