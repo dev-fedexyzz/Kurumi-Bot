@@ -28,7 +28,7 @@ global.dev = "𓂂𓏸 𐅹੭੭  𝙆𝙪𝙧𝙪𝙢𝙞 - 𝙈𝘿 ☕ ᦡ�
 global.author = "© ᴍᴀᴅᴇ ʙʏ ᴅᴇᴠ-ꜰᴇᴅᴇxʏᴢ"
 global.etiqueta = "© ᴍᴀᴅᴇ ʙʏ ᴅᴇᴠ-ꜰᴇᴅᴇxʏᴢ ꒰ ☕ ꒱ "
 global.currency = "Yenes"
-global.catalogo = fs.readFileSync('./storage/catalogo.jpg')
+global.catalogo = fs.readFileSync('./Kurumi/imagen/catalogo.jpg')
 
 
 global.gp1 = "https://chat.whatsapp.com/BeFAyDGgDIR7e1kEkdFs8d?mode=wwt"
