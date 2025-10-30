@@ -46,12 +46,12 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let infoUser = `
-🍒 *_Bienvenid@ ${nombre}_*
+🍒 *_Bienvenid @${nombre}_*
 ──────────────────────
 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
+☕ *_Baileys_* :: *fedExz-Bails*
 🍉 *_Premium_*:: ${premium}
-⏳ *_Tiempo activo_*:: ${uptime}
-🎋 *_Usuarios registrados_*:: ${totalreg}
+⏳ *_Tiempo activo_*:: ${uptime} 
 ☁️ *_Grupos activos_*:: ${groupsCount}
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
