@@ -80,29 +80,8 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   await m.react('🍮');
 
-  // Enviar imagen con el menú
   await conn.sendMessage(m.chat, {
     image: { url: imagen},
-    caption: finalMenu,
-    contextInfo: {
-      forwardingScore: 999,
-      isForwarded: true,
-      externalAdReply: {
-        title: 'Kurumi Bot ☕ Nueva versión',
-        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnailUrl: imagen,
-        mediaType: 1,
-        renderLargerThumbnail: false,
-        showAdAttribution: false
-}
-}
-}, { quoted: m});
-
-  // Enviar documento PDF con el mismo caption
-  await conn.sendMessage(m.chat, {
-    document: fs.readFileSync('./README.md'),
-    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
-    mimetype: 'application/pdf',
     caption: finalMenu,
     contextInfo: {
       forwardingScore: 999,
