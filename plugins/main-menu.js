@@ -74,6 +74,9 @@ let handler = async (m, { conn, usedPrefix}) => {
   await conn.sendMessage(m.chat, {
     image: { url: imagen},
     caption: finalMenu,
+    document: fs.readFileSync('./README.md'),
+    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
+    mimetype: 'application/pdf',
     contextInfo: {
       forwardingScore: 999,
       isForwarded: true,
@@ -86,12 +89,6 @@ let handler = async (m, { conn, usedPrefix}) => {
         showAdAttribution: false
 }
 }
-}, { quoted: m});
-
-  await conn.sendMessage(m.chat, {
-    document: fs.readFileSync('./README.md'),
-    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
-    mimetype: 'application/pdf'
 }, { quoted: m});
 
   await delay(400);
