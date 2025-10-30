@@ -1,6 +1,5 @@
 const { useMultiFileAuthState, DisconnectReason, makeCacheableSignalKeyStore, fetchLatestBaileysVersion } = (await import("@whiskeysockets/baileys"))
 import qrcode from "qrcode"
-import './index.js'
 import NodeCache from "node-cache"
 import fs from "fs"
 import path from "path"
