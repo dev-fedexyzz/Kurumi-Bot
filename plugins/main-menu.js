@@ -15,15 +15,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let tags = {
     'main': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕ ᦡᦡ',
-    'fun': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ғᴜɴ`_* 🎭 ᦡᦡ',
-    'anime': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴀɴɪᴍᴇ`_* 🌸',
-    'descargas': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴅᴏᴡɴʟᴏᴀᴅ`_* 🎧 ᦡᦡ',
-    'grupo': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ɢʀᴜᴘᴏs`_* 🍒 ᦡᦡ',
-    'ia': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ɪᴀ`_* ☁️ ᦡᦡ',
-    'tools': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴛᴏᴏʟs`_* 🧩 ᦡᦡ',
-    'owner': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴏᴡɴᴇʀ`_* ⚙️ ᦡᦡ',
-    'serbot': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ᴊᴀᴅɪ-ʙᴏᴛ`_* ☕ ᦡᦡ',
-    'buscador': '𓂂𓏸 𐅹੭੭  *_`ᴍᴇɴᴜ ʙᴜsᴄᴀᴅᴏʀ`_* 🍑 ᦡᦡ',
 };
 
   let header = '%category';
@@ -92,11 +83,15 @@ let handler = async (m, { conn, usedPrefix}) => {
         thumbnailUrl: imagen,
         mediaType: 1,
         renderLargerThumbnail: false,
-        showAdAttribution: false,
-        channelRD: '120363424055815484@newsletter',
-        channelName: 'Kurumi Channel Official'
+        showAdAttribution: false
 }
 }
+}, { quoted: m});
+
+  await conn.sendMessage(m.chat, {
+    document: fs.readFileSync('./README.md'),
+    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
+    mimetype: 'application/pdf'
 }, { quoted: m});
 
   await delay(400);
