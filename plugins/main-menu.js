@@ -76,10 +76,29 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
-  let perfil = 'https://files.catbox.moe/c65bk7.jpg';
+  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
 
   await m.react('🍮');
 
+  // Enviar imagen con el menú
+  await conn.sendMessage(m.chat, {
+    image: { url: imagen},
+    caption: finalMenu,
+    contextInfo: {
+      forwardingScore: 999,
+      isForwarded: true,
+      externalAdReply: {
+        title: 'Kurumi Bot ☕ Nueva versión',
+        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
+        thumbnailUrl: imagen,
+        mediaType: 1,
+        renderLargerThumbnail: false,
+        showAdAttribution: false
+}
+}
+}, { quoted: m});
+
+  // Enviar documento PDF con el mismo caption
   await conn.sendMessage(m.chat, {
     document: fs.readFileSync('./README.md'),
     fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
@@ -91,7 +110,7 @@ let handler = async (m, { conn, usedPrefix}) => {
       externalAdReply: {
         title: 'Kurumi Bot ☕ Nueva versión',
         body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnailUrl: perfil,
+        thumbnailUrl: imagen,
         mediaType: 1,
         renderLargerThumbnail: false,
         showAdAttribution: false
