@@ -12,10 +12,28 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let saludo = getSaludo();
-  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
+
+  let tags = {
+    'main': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕',
+    'fun': '𓂂𓏸 *_`ᴍᴇɴᴜ ғᴜɴ`_* 🎭',
+    'anime': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴀɴɪᴍᴇ`_* 🌸',
+    'descargas': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴅᴏᴡɴʟᴏᴀᴅ`_* 🎧',
+    'grupo': '𓂂𓏸 *_`ᴍᴇɴᴜ ɢʀᴜᴘᴏs`_* 🍒',
+    'ia': '𓂂𓏸 *_`ᴍᴇɴᴜ ɪᴀ`_* ☁️',
+    'tools': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴛᴏᴏʟs`_* 🧩',
+    'owner': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴏᴡɴᴇʀ`_* ⚙️',
+    'serbot': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴊᴀᴅɪ-ʙᴏᴛ`_* ☕',
+    'buscador': '𓂂𓏸 *_`ᴍᴇɴᴜ ʙᴜsᴄᴀᴅᴏʀ`_* 🍑',
+};
+
+  let header = '%category';
+  let body = '> ര ׄ ☕ ׅ *_%cmd_*';
+  let footer = '';
+  let after = ``;
 
   let user = global.db.data.users[m.sender];
   let premium = user.premium? '𝗌𝗂': '𝗇𝗈';
+  let limit = user.limit || 0;
   let totalreg = Object.keys(global.db.data.users).length;
   let groupsCount = Object.values(conn.chats).filter(v => v.id.endsWith('@g.us')).length;
   let uptime = clockString(process.uptime());
@@ -40,24 +58,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 ──────────────────────
 `.trim();
 
-  let tags = {
-    'main': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕',
-    'fun': '𓂂𓏸 *_`ᴍᴇɴᴜ ғᴜɴ`_* 🎭',
-    'anime': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴀɴɪᴍᴇ`_* 🌸',
-    'descargas': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴅᴏᴡɴʟᴏᴀᴅ`_* 🎧',
-    'grupo': '𓂂𓏸 *_`ᴍᴇɴᴜ ɢʀᴜᴘᴏs`_* 🍒',
-    'ia': '𓂂𓏸 *_`ᴍᴇɴᴜ ɪᴀ`_* ☁️',
-    'tools': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴛᴏᴏʟs`_* 🧩',
-    'owner': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴏᴡɴᴇʀ`_* ⚙️',
-    'serbot': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴊᴀᴅɪ-ʙᴏᴛ`_* ☕',
-    'buscador': '𓂂𓏸 *_`ᴍᴇɴᴜ ʙᴜsᴄᴀᴅᴏʀ`_* 🍑',
-};
-
-  let header = '%category';
-  let body = '> ☕ *_%cmd_*';
-  let footer = '';
-  let after = '';
-
   let commands = Object.values(global.plugins).filter(v => v.help && v.tags && v.command).map(v => ({
     help: Array.isArray(v.help)? v.help: [v.help],
     tags: Array.isArray(v.tags)? v.tags: [v.tags],
@@ -76,24 +76,24 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
+  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
 
   await m.react('🍮');
 
   await conn.sendMessage(m.chat, {
-    image: { url: imagen}, // imagen visible arriba
-    caption: finalMenu,
     document: fs.readFileSync('./README.md'),
     fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
     mimetype: 'application/pdf',
+    caption: finalMenu,
     contextInfo: {
       forwardingScore: 999,
       isForwarded: true,
       externalAdReply: {
-        title: 'Kurumi bot',
+        title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
         body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnailUrl: imagen, // imagen como perfil
+        thumbnailUrl: imagen,
         mediaType: 1,
-        renderLargerThumbnail: false,
+        renderLargerThumbnail: true,
         showAdAttribution: false
 }
 }
