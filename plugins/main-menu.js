@@ -48,13 +48,13 @@ let handler = async (m, { conn, usedPrefix}) => {
   let infoUser = `
 ര ׄ 🍒 *_𝖧𝗈𝗅𝖺!¡⁩ 𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽@_* ⁩| *_𝖲𝗈𝗒 𝗄𝗎𝗋𝗎𝗆𝗂 𝗆𝖽_* *_꒰ ☕ ꒱_*
 ──────────────────────
-> 📚 *_Usuario_* :: @${m.sender.split('@')[0]}
-> 🍉 *_Premium_* :: ${premium}
-> ⏳ *_Tiempo_* :: ${uptime}
-> 🎋 *_Usuarios_* :: ${totalreg}
-> ☁️ *_Activos_* :: ${groupsCount}
-> 🍃 *_Comandos_* :: ${Object.keys(global.plugins).length}
-> 📡 *_Fecha_* :: \`${new Date().toLocaleString('es-ES')}\`
+> 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
+> 🍉 *_Premium_*:: ${premium}
+> ⏳ *_Tiempo_*:: ${uptime}
+> 🎋 *_Usuarios_*:: ${totalreg}
+> ☁️ *_Activos_*:: ${groupsCount}
+> 🍃 *_Comandos_*:: ${Object.keys(global.plugins).length}
+> 📡 *_Fecha_*:: \`${new Date().toLocaleString('es-ES')}\`
 ──────────────────────
 `.trim();
 
@@ -76,7 +76,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
-  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
+  let perfil = 'https://files.catbox.moe/c65bk7.jpg';
 
   await m.react('🍮');
 
@@ -89,11 +89,11 @@ let handler = async (m, { conn, usedPrefix}) => {
       forwardingScore: 999,
       isForwarded: true,
       externalAdReply: {
-        title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
+        title: 'Kurumi Bot ☕ Nueva versión',
         body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnailUrl: imagen,
+        thumbnailUrl: perfil,
         mediaType: 1,
-        renderLargerThumbnail: true,
+        renderLargerThumbnail: false,
         showAdAttribution: false
 }
 }
