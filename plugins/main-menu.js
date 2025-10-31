@@ -77,30 +77,31 @@ let handler = async (m, { conn, usedPrefix}) => {
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
   let imagen = 'https://files.catbox.moe/c65bk7.jpg';
 
-  await m.react('🍮');
+await m.react('🍮');
 
-  await conn.sendMessage(m.chat, {
-  text: finalMenu,
-  footer: 'Seleccione un boton',
+await conn.sendMessage(m.chat, {
+  image: { url: imagen },
+  caption: finalMenu,
+  footer: '© 2025-2026 Kurumi 🌾',
   buttons: [
-    { buttonId: `${usedPrefix}code`, buttonText: { displayText: '🔐 Código'}, type: 1},
-    { buttonId: `${usedPrefix}allmenu`, buttonText: { displayText: '📚 Menú completo'}, type: 1}
+    { buttonId: `usedPrefixcode`, buttonText:  displayText: '🔐 Código' , type: 1 ,
+     buttonId: `{usedPrefix}allmenu`, buttonText: { displayText: '📚 Menú completo' }, type: 1 }
   ],
   headerType: 4,
   contextInfo: {
     mentionedJid: [m.sender],
     externalAdReply: {
       title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
-      body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
+      body: `𝖧𝗈𝗅𝖺 nombre,{saludo}`,
       thumbnailUrl: imagen,
       mediaType: 1,
       renderLargerThumbnail: true,
       showAdAttribution: false
-}
-}
-}, { quoted: m});
+    }
+  }
+}, { quoted: m });
 
-  await delay(400);
+await delay(400);
 };
 
 handler.help = ['menu'];
