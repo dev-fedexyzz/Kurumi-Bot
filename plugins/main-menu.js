@@ -46,7 +46,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let infoUser = `
-🍒 *_Bienvenid @${nombre}_*
+\`\`\`🍒 *_Bienvenid @${nombre}_*
 ──────────────────────
 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
 ☕ *_Baileys_* :: *_fedExz-Bails_*
@@ -55,6 +55,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 ☁️ *_Grupos activos_*:: ${groupsCount}
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
+\`\`\`
 `.trim();
 
   let commands = Object.values(global.plugins).filter(v => v.help && v.tags && v.command).map(v => ({
@@ -77,30 +78,28 @@ let handler = async (m, { conn, usedPrefix}) => {
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
   let imagen = 'https://files.catbox.moe/c65bk7.jpg';
 
-await m.react('🍮');
+  await m.react('🍮');
 
-await conn.sendMessage(m.chat, {
-  text: finalMenu,
-  footer: '© 2025',
-  buttons: [
-    { buttonId: `usedPrefixcode`, buttonText:  displayText: '🔐 Código' , type: 1 ,
-     buttonId: `{usedPrefix}reg fede.13`, buttonText: { displayText: '📝 Registro' }, type: 1 }
-  ],
-  headerType: 4,
-  contextInfo: {
-    mentionedJid: [m.sender],
-    externalAdReply: {
-      title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
-      body: `𝖧𝗈𝗅𝖺 nombre,{saludo}`,
-      thumbnailUrl: imagen,
-      mediaType: 1,
-      renderLargerThumbnail: true,
-      showAdAttribution: false
-    }
-  }
-}, { quoted: m });
+  await conn.sendMessage(m.chat, {
+    document: fs.readFileSync('./README.md'),
+    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🌾 ꒱',
+    mimetype: 'application/pdf',
+    caption: finalMenu,
+    contextInfo: {
+      forwardingScore: 999,
+      isForwarded: true,
+      externalAdReply: {
+        title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
+        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
+        thumbnailUrl: imagen,
+        mediaType: 1,
+        renderLargerThumbnail: true,
+        showAdAttribution: false
+}
+}
+}, { quoted: m});
 
-await delay(400);
+  await delay(400);
 };
 
 handler.help = ['menu'];
