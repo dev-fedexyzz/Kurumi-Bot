@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const handler = async (m, { conn, text, usedPrefix }) => {
-  if (!text) return conn.reply(m.chat, '✐ Por favor, ingresa un término de búsqueda o un enlace de TikTok.', m);
+  if (!text) return conn.reply(m.chat, '🌾 Por favor, ingresa un término de búsqueda o un enlace de TikTok.', m);
 
   const isUrl = /(?:https:?\/{2})?(?:www\.|vm\.|vt\.|t\.)?tiktok\.com\/([^\s&]+)/gi.test(text);
 
@@ -15,7 +15,7 @@ const handler = async (m, { conn, text, usedPrefix }) => {
 
       const { title, duration, author, created_at, type, images, music, play } = data;
 
-      const caption = `✐ Título » ${title || 'Contenido TikTok'}
+      const caption = `🪐 Título » ${title || 'Contenido TikTok'}
 ⴵ Autor » ${author?.nickname || author?.unique_id || 'No disponible'}
 ✰ Duración » ${duration || 'No disponible'} segundos
 ❒ Fecha » ${created_at || 'No disponible'}`;
@@ -55,7 +55,7 @@ const handler = async (m, { conn, text, usedPrefix }) => {
       const medias = results.slice(0, 10).map(v => ({
         type: 'video',
         data: { url: v.play },
-        caption: `✐ Título » ${v.title || 'Video TikTok'}
+        caption: `🪐 Título » ${v.title || 'Video TikTok'}
 ⴵ Autor » ${v.author?.nickname || 'Desconocido'}
 ✰ Duración » ${v.duration || 'No disponible'} segundos
 ❒ Formato » Video`
@@ -75,6 +75,5 @@ handler.help = ['tiktoks'];
 handler.tags = ['buscadores'];
 handler.command = ['tiktoks', 'tiktoksearch'];
 handler.group = true;
-handler.coin = 23
 
 export default handler;
