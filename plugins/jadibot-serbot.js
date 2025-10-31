@@ -115,37 +115,18 @@ txtQR = await conn.sendMessage(m.chat, { image: await qrcode.toBuffer(qr, { scal
 } else {
 return 
 }
-if (qr && mcode) {
-    const rawCode = await sock.requestPairingCode(m.sender.split`@`[0], "RUBYCHAN");
-
-    const interactiveButtons = [{
-        name: "cta_copy",
-        buttonParamsJson: JSON.stringify({
-            display_text: "Copiar Código",
-            id: "copy-jadibot-code",
-            copy_code: rawCode
-        })
-    }];
-
-    const interactiveMessage = {
-        image: { url: "https://files.catbox.moe/c65bk7.jpg" },
-        caption: `*✨ ¡Tu código de vinculación está listo! ✨*\n\nUsa el siguiente código para conectarte como Sub-Bot:\n\n> Haz clic en el botón de abajo para copiarlo fácilmente.`,
-        title: "Código de Vinculación",
-        footer: "Este código expirará en 45 segundos.",
-        interactiveButtons
-    };
-
-    const sentMsg = await conn.sendMessage(m.chat, interactiveMessage, { quoted: m });
-    console.log(`Código de vinculación enviado: ${rawCode}`);
-
-    if (sentMsg && sentMsg.key) {
-        setTimeout(() => {
-            conn.sendMessage(m.chat, { delete: sentMsg.key });
-        }, 45000);
-    }
-    return;
+if (txtQR && txtQR.key) {
+setTimeout(() => { conn.sendMessage(m.sender, { delete: txtQR.key })}, 30000)
 }
-
+return
+} 
+if (qr && mcode) {
+let secret = await sock.requestPairingCode((m.sender.split`@`[0]))
+secret = secret.match(/.{1,4}/g)?.join("-")
+txtCode = await conn.sendMessage(m.chat, {text : rtx2}, { quoted: m })
+codeBot = await m.reply(secret)
+console.log(secret)
+}
 if (txtCode && txtCode.key) {
 setTimeout(() => { conn.sendMessage(m.sender, { delete: txtCode.key })}, 30000)
 }
