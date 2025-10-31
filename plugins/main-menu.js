@@ -46,8 +46,17 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let infoUser = `
-\`\`\`🍒 *_Bienvenid @${nombre}_*
-──────────────────────
+🍒 *_Hola, Bienvenid@ Soy Kurumi-Bot_*
+
+> 🍓 *Kurumi-MD* es un sistema automatizado inteligente, creado para interactuar a través de comandos sencillos.  
+
+> ⚙️ Te permite:  
+> • Descargar videos de múltiples plataformas  
+> • Buscar contenido directamente desde la web  
+> • Jugar y entretenerte dentro del chat  
+
+> ✨ ¡Todo desde una sola conversación con *Kurumi*!
+
 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
 ☕ *_Baileys_* :: *_fedExz-Bails_*
 🍉 *_Premium_*:: ${premium}
@@ -55,7 +64,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 ☁️ *_Grupos activos_*:: ${groupsCount}
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
-\`\`\`
 `.trim();
 
   let commands = Object.values(global.plugins).filter(v => v.help && v.tags && v.command).map(v => ({
