@@ -1,4 +1,5 @@
 import fs from 'fs';
+import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix}) => {
   const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -49,9 +50,9 @@ let handler = async (m, { conn, usedPrefix}) => {
 🍒 *_Bienvenid @${nombre}_*
 ──────────────────────
 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
-☕ *_Baileys_* :: *_fedExz-Bails_*
+☕ *_Baileys_*:: *_fedExz-Bails_*
 🍉 *_Premium_*:: ${premium}
-⏳ *_Tiempo activo_*:: ${uptime} 
+⏳ *_Tiempo activo_*:: ${uptime}
 ☁️ *_Grupos activos_*:: ${groupsCount}
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
@@ -79,24 +80,51 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   await m.react('🍮');
 
-  await conn.sendMessage(m.chat, {
-    document: fs.readFileSync('./README.md'),
-    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🌾 ꒱',
-    mimetype: 'application/pdf',
-    caption: finalMenu,
+  const interactiveMessage = {
+    header: {
+      title: '',
+      hasMediaAttachment: true,
+      documentMessage: {
+        url: imagen,
+        mimetype: 'application/pdf',
+        fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🌾 ꒱'
+}
+},
+    body: { text: finalMenu},
+    footer: { text: ' '},
+    nativeFlowMessage: {
+      buttons: [
+        {
+          name: 'single_select',
+          buttonParamsJson: JSON.stringify({
+            title: ' ',
+            sections: [
+              {
+                title: 'SELECCIONE UNA CATEGORIA 💥',
+                rows: [
+                  { header: '📚MENU COMPLETO', title: 'Comandos', id: '.allmenu'},
+                  { header: '🔕 Eliminar registro ', title: 'Eliminar registro', id: '.unreg'},
+                  { header: '📚 Información sobre el server', title: 'Sobre el server', id: '.estado'},
+                ]
+}
+            ]
+})
+}
+      ],
+      messageParamsJson: ''
+},
     contextInfo: {
-      forwardingScore: 999,
-      isForwarded: true,
+      mentionedJid: [m.sender],
       externalAdReply: {
-        title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
-        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnailUrl: imagen,
+        title: 'Selecciona aqui',
+        thumbnail: await (await fetch(imagen)).buffer(),
         mediaType: 1,
-        renderLargerThumbnail: true,
         showAdAttribution: false
 }
 }
-}, { quoted: m});
+};
+
+  await conn.sendMessage(m.chat, interactiveMessage, { quoted: m});
 
   await delay(400);
 };
@@ -104,6 +132,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 handler.help = ['menu'];
 handler.tags = ['main'];
 handler.command = ['menu', 'help', 'menú'];
-handler.register = true
+handler.register = true;
 
 export default handler;
