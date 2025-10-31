@@ -78,57 +78,29 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
 
-  const media = {
-    documentMessage: {
-      url: imagen,
-      mimetype: 'application/pdf',
-      fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🌾 ꒱'
-}
-};
-
-  const interactiveMessage = {
-    header: {
-      title: '',
-      hasMediaAttachment: true,
-      documentMessage: media.documentMessage
-},
-    body: { text: finalMenu},
-    footer: { text: ' '},
-    nativeFlowMessage: {
-      buttons: [
-        {
-          name: 'single_select',
-          buttonParamsJson: JSON.stringify({
-            title: ' ',
-            sections: [
-              {
-                title: 'SELECCIONE UNA CATEGORIA 💥',
-                rows: [
-                  { header: '📚MENU COMPLETO', title: 'Comandos', id: '.allmenu'},
-                  { header: '🔕 Eliminar registro ', title: 'Eliminar registro', id: '.unreg'},
-                  { header: '📚 Información sobre el server', title: 'Sobre el server', id: '.estado'}
-                ]
-}
-]
-})
-}
-      ],
-      messageParamsJson: ''
-},
-    contextInfo: {
-      mentionedJid: [m.sender],
-      externalAdReply: {
-        title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
-        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-        thumbnail: await (await fetch(imagen)).buffer(),
-        mediaType: 1,
-        showAdAttribution: false
-}
-}
-};
-
   await m.react('🍮');
-  await conn.sendMessage(m.chat, interactiveMessage, { quoted: m});
+
+  await conn.sendMessage(m.chat, {
+  text: finalMenu,
+  footer: '© Selecciona un boton',
+  buttons: [
+    { buttonId: `${usedPrefix}code`, buttonText: { displayText: '🔐 Código'}, type: 1},
+    { buttonId: `${usedPrefix}allmenu`, buttonText: { displayText: '📚 Menú completo'}, type: 1}
+  ],
+  headerType: 4,
+  contextInfo: {
+    mentionedJid: [m.sender],
+    externalAdReply: {
+      title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
+      body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
+      thumbnailUrl: imagen,
+      mediaType: 1,
+      renderLargerThumbnail: true,
+      showAdAttribution: false
+}
+}
+}, { quoted: m});
+
   await delay(400);
 };
 
