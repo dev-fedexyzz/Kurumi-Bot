@@ -13,24 +13,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let saludo = getSaludo();
-
-  let tags = {
-    'main': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕',
-    'fun': '𓂂𓏸 *_`ᴍᴇɴᴜ ғᴜɴ`_* 🎭',
-    'anime': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴀɴɪᴍᴇ`_* 🌸',
-    'descargas': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴅᴏᴡɴʟᴏᴀᴅ`_* 🎧',
-    'grupo': '𓂂𓏸 *_`ᴍᴇɴᴜ ɢʀᴜᴘᴏs`_* 🍒',
-    'ia': '𓂂𓏸 *_`ᴍᴇɴᴜ ɪᴀ`_* ☁️',
-    'tools': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴛᴏᴏʟs`_* 🧩',
-    'owner': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴏᴡɴᴇʀ`_* ⚙️',
-    'serbot': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴊᴀᴅɪ-ʙᴏᴛ`_* ☕',
-    'buscador': '𓂂𓏸 *_`ᴍᴇɴᴜ ʙᴜsᴄᴀᴅᴏʀ`_* 🍑',
-};
-
-  let header = '%category';
-  let body = '> ര ׄ ☕ ׅ *_%cmd_*';
-  let footer = '';
-  let after = ``;
+  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
 
   let user = global.db.data.users[m.sender];
   let premium = user.premium? '𝗌𝗂': '𝗇𝗈';
@@ -58,6 +41,24 @@ let handler = async (m, { conn, usedPrefix}) => {
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
 `.trim();
 
+  let tags = {
+    'main': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕',
+    'fun': '𓂂𓏸 *_`ᴍᴇɴᴜ ғᴜɴ`_* 🎭',
+    'anime': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴀɴɪᴍᴇ`_* 🌸',
+    'descargas': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴅᴏᴡɴʟᴏᴀᴅ`_* 🎧',
+    'grupo': '𓂂𓏸 *_`ᴍᴇɴᴜ ɢʀᴜᴘᴏs`_* 🍒',
+    'ia': '𓂂𓏸 *_`ᴍᴇɴᴜ ɪᴀ`_* ☁️',
+    'tools': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴛᴏᴏʟs`_* 🧩',
+    'owner': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴏᴡɴᴇʀ`_* ⚙️',
+    'serbot': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴊᴀᴅɪ-ʙᴏᴛ`_* ☕',
+    'buscador': '𓂂𓏸 *_`ᴍᴇɴᴜ ʙᴜsᴄᴀᴅᴏʀ`_* 🍑',
+};
+
+  let header = '%category';
+  let body = '> ര ׄ ☕ ׅ *_%cmd_*';
+  let footer = '';
+  let after = ``;
+
   let commands = Object.values(global.plugins).filter(v => v.help && v.tags && v.command).map(v => ({
     help: Array.isArray(v.help)? v.help: [v.help],
     tags: Array.isArray(v.tags)? v.tags: [v.tags],
@@ -76,59 +77,40 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
-  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
 
-  await m.react('🍮');
+  const sections = [
+    {
+      title: 'SELECCIONE UNA CATEGORÍA 💥',
+      rows: [
+        { title: '📚 MENU COMPLETO', description: 'Ver todos los comandos disponibles', rowId: `${usedPrefix}allmenu`},
+        { title: '🔕 Eliminar registro', description: 'Eliminar tu registro del bot', rowId: `${usedPrefix}unreg`},
+        { title: '📡 Información del server', description: 'Estado y detalles del bot', rowId: `${usedPrefix}estado`},
+      ]
+}
+  ];
 
-  const interactiveMessage = {
-    header: {
-      title: '',
-      hasMediaAttachment: true,
-      documentMessage: {
-        url: imagen,
-        mimetype: 'application/pdf',
-        fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🌾 ꒱'
-}
-},
-    body: { text: finalMenu},
-    footer: { text: ' '},
-    nativeFlowMessage: {
-      buttons: [
-        {
-          name: 'single_select',
-          buttonParamsJson: JSON.stringify({
-            title: ' ',
-            sections: [
-              {
-                title: 'SELECCIONE UNA CATEGORIA 💥',
-                rows: [
-                  { header: '📚MENU COMPLETO', title: 'Comandos', id: '.allmenu'},
-                  { header: '🔕 Eliminar registro ', title: 'Eliminar registro', id: '.unreg'},
-                  { header: '📚 Información sobre el server', title: 'Sobre el server', id: '.estado'},
-                ]
-}
-            ]
-})
-}
-      ],
-      messageParamsJson: ''
-},
+  const listMessage = {
+    text: finalMenu,
+    footer: 'fedExz-Bails Bot © 2025',
+    title: '🧩 MENÚ PRINCIPAL',
+    buttonText: '📂 Abrir menú',
+    sections,
     contextInfo: {
       mentionedJid: [m.sender],
       externalAdReply: {
-        title: 'Selecciona aqui',
-        thumbnail: await (await fetch(imagen)).buffer(),
+        title: 'Selecciona aquí',
+        body: `Hola ${nombre}, ${saludo}`,
+        thumbnailUrl: imagen,
         mediaType: 1,
+        renderLargerThumbnail: true,
         showAdAttribution: false
 }
 }
 };
 
-  await conn.sendMessage(m.chat, interactiveMessage, { quoted: m});
-
+  await conn.sendMessage(m.chat, listMessage, { quoted: m});
   await delay(400);
 };
-
 handler.help = ['menu'];
 handler.tags = ['main'];
 handler.command = ['menu', 'help', 'menú'];
