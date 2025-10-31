@@ -98,8 +98,8 @@ let handler = async (m, { conn, usedPrefix}) => {
     contextInfo: {
       mentionedJid: [m.sender],
       externalAdReply: {
-        title: 'Selecciona aquí',
-        body: `Hola ${nombre}, ${saludo}`,
+        title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
+        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
         thumbnailUrl: imagen,
         mediaType: 1,
         renderLargerThumbnail: true,
@@ -108,9 +108,11 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 };
 
-  await conn.sendMessage(m.chat, listMessage, { quoted: m});
+  await m.react('🍮');
+await conn.sendMessage(m.chat, listMessage, { quoted: m});
   await delay(400);
 };
+
 handler.help = ['menu'];
 handler.tags = ['main'];
 handler.command = ['menu', 'help', 'menú'];
