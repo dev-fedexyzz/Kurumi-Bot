@@ -81,7 +81,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   await conn.sendMessage(m.chat, {
     document: fs.readFileSync('./README.md'),
-    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🍮 ꒱',
+    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🌾 ꒱',
     mimetype: 'application/pdf',
     caption: finalMenu,
     contextInfo: {
