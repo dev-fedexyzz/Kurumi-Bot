@@ -16,7 +16,7 @@ global.prems = []
 
 
 global.libreria = "Baileys"
-global.vs = "^1.3.2"
+global.vs = "^1.3.2|fedExz"
 global.nameqr = "Kurumi-Bot"
 global.sessions = "Sessions/Principal"
 global.jadi = "Sessions/SubBot"
