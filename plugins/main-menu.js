@@ -1,5 +1,4 @@
 import fs from 'fs';
-import fetch from 'node-fetch';
 
 let handler = async (m, { conn, usedPrefix}) => {
   const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -13,33 +12,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let saludo = getSaludo();
-  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
-
-  let user = global.db.data.users[m.sender];
-  let premium = user.premium? '𝗌𝗂': '𝗇𝗈';
-  let limit = user.limit || 0;
-  let totalreg = Object.keys(global.db.data.users).length;
-  let groupsCount = Object.values(conn.chats).filter(v => v.id.endsWith('@g.us')).length;
-  let uptime = clockString(process.uptime());
-
-  function clockString(seconds) {
-    let h = Math.floor(seconds / 3600);
-    let m = Math.floor(seconds % 3600 / 60);
-    let s = Math.floor(seconds % 60);
-    return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':');
-}
-
-  let infoUser = `
-🍒 *_Bienvenid @${nombre}_*
-──────────────────────
-📚 *_Usuario_*:: @${m.sender.split('@')[0]}
-☕ *_Baileys_*:: *_fedExz-Bails_*
-🍉 *_Premium_*:: ${premium}
-⏳ *_Tiempo activo_*:: ${uptime}
-☁️ *_Grupos activos_*:: ${groupsCount}
-🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
-📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
-`.trim();
 
   let tags = {
     'main': '𓂂𓏸 *_`ᴍᴇɴᴜ ᴍᴀɪɴ`_* ☕',
@@ -59,6 +31,32 @@ let handler = async (m, { conn, usedPrefix}) => {
   let footer = '';
   let after = ``;
 
+  let user = global.db.data.users[m.sender];
+  let premium = user.premium? '𝗌𝗂': '𝗇𝗈';
+  let limit = user.limit || 0;
+  let totalreg = Object.keys(global.db.data.users).length;
+  let groupsCount = Object.values(conn.chats).filter(v => v.id.endsWith('@g.us')).length;
+  let uptime = clockString(process.uptime());
+
+  function clockString(seconds) {
+    let h = Math.floor(seconds / 3600);
+    let m = Math.floor(seconds % 3600 / 60);
+    let s = Math.floor(seconds % 60);
+    return [h, m, s].map(v => v.toString().padStart(2, '0')).join(':');
+}
+
+  let infoUser = `
+🍒 *_Bienvenid @${nombre}_*
+──────────────────────
+📚 *_Usuario_*:: @${m.sender.split('@')[0]}
+☕ *_Baileys_* :: *_fedExz-Bails_*
+🍉 *_Premium_*:: ${premium}
+⏳ *_Tiempo activo_*:: ${uptime} 
+☁️ *_Grupos activos_*:: ${groupsCount}
+🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
+📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
+`.trim();
+
   let commands = Object.values(global.plugins).filter(v => v.help && v.tags && v.command).map(v => ({
     help: Array.isArray(v.help)? v.help: [v.help],
     tags: Array.isArray(v.tags)? v.tags: [v.tags],
@@ -77,12 +75,13 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
+  let imagen = 'https://files.catbox.moe/c65bk7.jpg';
 
   await m.react('🍮');
 
   await conn.sendMessage(m.chat, {
   text: finalMenu,
-  footer: '© Selecciona un boton',
+  footer: 'Seleccione un boton',
   buttons: [
     { buttonId: `${usedPrefix}code`, buttonText: { displayText: '🔐 Código'}, type: 1},
     { buttonId: `${usedPrefix}allmenu`, buttonText: { displayText: '📚 Menú completo'}, type: 1}
@@ -107,6 +106,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 handler.help = ['menu'];
 handler.tags = ['main'];
 handler.command = ['menu', 'help', 'menú'];
-handler.register = true;
+handler.register = true
 
 export default handler;
