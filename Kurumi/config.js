@@ -22,7 +22,7 @@ global.sessions = "Sessions/Principal"
 global.jadi = "Sessions/SubBot"
 global.KurumiJadibts = true
 
-global.botname = "𝙆𝙪𝙧𝙪𝙢𝙞 𝙈𝘿"
+global.botname = "🌾 𝙆𝙪𝙧𝙪𝙢𝙞 𝙈𝘿 🪐"
 global.textbot = "꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳"
 global.dev = "𓂂𓏸 𐅹੭੭  𝙆𝙪𝙧𝙪𝙢𝙞 - 𝙈𝘿 ☕ ᦡᦡ"
 global.author = "© ᴍᴀᴅᴇ ʙʏ ᴅᴇᴠ-ꜰᴇᴅᴇxʏᴢ"
