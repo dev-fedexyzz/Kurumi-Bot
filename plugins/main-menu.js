@@ -78,48 +78,57 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
 
-  await m.react('🍮');
-
-  await conn.sendMessage(m.chat, {
-  header: {
-    title: '',
-    hasMediaAttachment: true,
-    documentMessage: media.documentMessage // Asegúrate de que 'media' esté definido
-},
-  body: { text: finalMenu},
-  footer: { text: ' '},
-  nativeFlowMessage: {
-    buttons: [
-      {
-        name: 'single_select',
-        buttonParamsJson: JSON.stringify({
-          title: ' ',
-          sections: [
-            {
-              title: 'SELECCIONE UNA CATEGORIA 💥',
-              rows: [
-                { header: '📚MENU COMPLETO', title: 'Comandos', id: '.allmenu'},
-                { header: '🔕 Eliminar registro ', title: 'Eliminar registro', id: '.unreg'},
-                { header: '📚 Información sobre el server', title: 'Sobre el server', id: '.estado'}
-              ]
+  const media = {
+    documentMessage: {
+      url: imagen,
+      mimetype: 'application/pdf',
+      fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🌾 ꒱'
 }
-          ]
+};
+
+  const interactiveMessage = {
+    header: {
+      title: '',
+      hasMediaAttachment: true,
+      documentMessage: media.documentMessage
+},
+    body: { text: finalMenu},
+    footer: { text: ' '},
+    nativeFlowMessage: {
+      buttons: [
+        {
+          name: 'single_select',
+          buttonParamsJson: JSON.stringify({
+            title: ' ',
+            sections: [
+              {
+                title: 'SELECCIONE UNA CATEGORIA 💥',
+                rows: [
+                  { header: '📚MENU COMPLETO', title: 'Comandos', id: '.allmenu'},
+                  { header: '🔕 Eliminar registro ', title: 'Eliminar registro', id: '.unreg'},
+                  { header: '📚 Información sobre el server', title: 'Sobre el server', id: '.estado'}
+                ]
+}
+]
 })
 }
-    ],
-    messageParamsJson: ''
+      ],
+      messageParamsJson: ''
 },
-  contextInfo: {
-    mentionedJid: [m.sender],
-    externalAdReply: {
-      title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
-      body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-      thumbnail: await (await fetch(imagen)).buffer(),
-      mediaType: 1,
-      showAdAttribution: false
+    contextInfo: {
+      mentionedJid: [m.sender],
+      externalAdReply: {
+        title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
+        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
+        thumbnail: await (await fetch(imagen)).buffer(),
+        mediaType: 1,
+        showAdAttribution: false
 }
 }
-}, { quoted: m});
+};
+
+  await m.react('🍮');
+  await conn.sendMessage(m.chat, interactiveMessage, { quoted: m});
   await delay(400);
 };
 
