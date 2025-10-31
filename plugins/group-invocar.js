@@ -22,7 +22,7 @@ const handler = async (msg, { conn }) => {
     const args = messageText.trim().split(' ').slice(1);
     const extraMsg = args.join(' ');
 
-    let texto = `🌾 Invocación grupal\n\n`;
+    let texto = `\`\`\`INVOCACIÓN\`\`\`\n\n`;
     texto += `✐ Grupo: *${metadata.subject}*\n`;
     texto += `ⴵ Miembros: *${participants.length}*\n`;
     if (extraMsg) texto += `✰ Mensaje: *${extraMsg}*\n`;
