@@ -42,7 +42,7 @@ let handler = async (m, { conn}) => {
   if (botsEnGrupo> 0) {
     for (let b of botsEnGrupoDetalles) {
       const numero = b.jid.split('@')[0]
-      txt += `★ *${b.tipo}* » @${numero}\n`
+      txt += `*${b.tipo}* » @${numero}\n`
 }
 } else {
     txt += '😿 𝙉𝙤 𝙝𝙖𝙮 𝙗𝙤𝙩𝙨 𝙖𝙘𝙩𝙞𝙫𝙤𝙨 𝙚𝙣 𝙚𝙨𝙩𝙚 𝙜𝙧𝙪𝙥𝙤.\n'
