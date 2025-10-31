@@ -46,7 +46,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 }
 
   let infoUser = `
-🍒 *_Hola, Bienvenid@ Soy Kurumi-Bot_*
+🍒 *_Hola!¡, Bienvenid@ Soy Kurumi-Bot..._*
 
 > 🍓 *Kurumi-MD* es un sistema automatizado inteligente, creado para interactuar a través de comandos sencillos.  
 
@@ -55,7 +55,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 > • Buscar contenido directamente desde la web  
 > • Jugar y entretenerte dentro del chat  
 
-> ✨ ¡Todo desde una sola conversación con *Kurumi*!
+──────────────────────
 
 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
 ☕ *_Baileys_* :: *_fedExz-Bails_*
