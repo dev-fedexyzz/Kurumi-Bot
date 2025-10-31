@@ -17,8 +17,8 @@ let crm3 = "SBpbmZvLWRvbmFyLmpz"
 let crm4 = "IF9hdXRvcmVzcG9uZGVyLmpzIGluZm8tYm90Lmpz"
 let drm1 = ""
 let drm2 = ""
-let rtx = `*ᴠɪɴᴄᴜʟᴀᴄɪᴏ́ɴ ᴘᴏʀ Qʀ*`
-let rtx2 = `*ᴠɪɴᴄᴜʟᴀᴄɪᴏ́ɴ ᴘᴏʀ ᴄᴏ́ᴅɪɢᴏ*`
+let rtx = "🌾  𝗩𝗶𝗻𝗰𝘂𝗹𝗮 𝘁𝘂 𝗰𝘂𝗲𝗻𝘁𝗮 𝗰𝗼𝗻 𝗲𝗹 𝗰𝗼́𝗱𝗶𝗴𝗼.\n\n𝗦𝗶𝗴𝘂𝗲 𝗲𝘀𝘁𝗼𝘀 𝗽𝗮𝘀𝗼𝘀:\n\n🍃 𝗠𝗮́𝘀 𝗼𝗽𝗰𝗶𝗼𝗻𝗲𝘀 » 𝗗𝗶𝘀𝗽𝗼𝘀𝗶𝘁𝗶𝘃𝗼𝘀 𝘃𝗶𝗻𝗰𝘂𝗹𝗮𝗱𝗼𝘀 » 𝗩𝗶𝗻𝗰𝘂𝗹𝗮𝗿 𝗻𝘂𝗲𝘃𝗼 𝗱𝗶𝘀𝗽𝗼𝘀𝗶𝘁𝗶𝘃𝗼 » 𝗘𝘀𝗰𝗮𝗻𝗲𝗮𝗿 𝗰𝗼́𝗱𝗶𝗴𝗼 𝗤𝗥.\n\n🪐 𝗘𝗹 𝗰𝗼́𝗱𝗶𝗴𝗼 𝗲𝘀 𝘃𝗮́𝗹𝗶𝗱𝗼 𝗱𝘂𝗿𝗮𝗻𝘁𝗲 𝟲𝟬 𝘀𝗲𝗴𝘂𝗻𝗱𝗼𝘀.";
+let rtx2 = "🌵  𝗩𝗶𝗻𝗰𝘂𝗹𝗮 𝘁𝘂 𝗰𝘂𝗲𝗻𝘁𝗮 𝗰𝗼𝗻 𝗲𝗹 𝗰𝗼́𝗱𝗶𝗴𝗼.\n\n𝗦𝗶𝗴𝘂𝗲 𝗲𝘀𝘁𝗼𝘀 𝗽𝗮𝘀𝗼𝘀:\n\n🌿 𝗠𝗮́𝘀 𝗼𝗽𝗰𝗶𝗼𝗻𝗲𝘀 » 𝗗𝗶𝘀𝗽𝗼𝘀𝗶𝘁𝗶𝘃𝗼𝘀 𝘃𝗶𝗻𝗰𝘂𝗹𝗮𝗱𝗼𝘀 » 𝗩𝗶𝗻𝗰𝘂𝗹𝗮𝗿 𝗻𝘂𝗲𝘃𝗼 𝗱𝗶𝘀𝗽𝗼𝘀𝗶𝘁𝗶𝘃𝗼 » 𝗨𝘀𝗮𝗿 𝗻𝘂́𝗺𝗲𝗿𝗼 𝗱𝗲 𝘁𝗲𝗹𝗲́𝗳𝗼𝗻𝗼.\n\n🪐 𝗘𝗹 𝗰𝗼́𝗱𝗶𝗴𝗼 𝗲𝘀 𝘃𝗮́𝗹𝗶𝗱𝗼 𝗱𝘂𝗿𝗮𝗻𝘁𝗲 𝟲𝟬 𝘀𝗲𝗴𝘂𝗻𝗱𝗼𝘀.";
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const KurumiJBOptions = {}
@@ -31,7 +31,7 @@ let time = global.db.data.users[m.sender].Subs + 120000
 if (new Date - global.db.data.users[m.sender].Subs < 120000) return conn.reply(m.chat, `🍒 Debes esperar ${msToTime(time - new Date())} para volver a vincular un *Sub-Bot.*`, m)
 let socklimit = global.conns.filter(sock => sock?.user).length
 if (socklimit >= 50) {
-return m.reply(`🍒 No se han encontrado espacios para *Sockets* disponibles.`)
+return m.reply(`🌾 No se han encontrado espacios para *Sockets* disponibles.`)
 }
 let mentionedJid = await m.mentionedJid
 let who = mentionedJid && mentionedJid[0] ? mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
@@ -74,7 +74,7 @@ fs.mkdirSync(pathKurumiJadiBot, { recursive: true })}
 try {
 args[0] && args[0] != undefined ? fs.writeFileSync(pathCreds, JSON.stringify(JSON.parse(Buffer.from(args[0], "base64").toString("utf-8")), null, '\t')) : ""
 } catch {
-conn.reply(m.chat, `🍒 Use correctamente el comando » ${usedPrefix + command}`, m)
+conn.reply(m.chat, `🌾 Use correctamente el comando » ${usedPrefix + command}`, m)
 return
 }
 const comb = Buffer.from(crm1 + crm2 + crm3 + crm4, "base64")
@@ -194,7 +194,7 @@ userJid = sock.authState.creds.me.jid || `${path.basename(pathKurumiJadiBot)}@s.
 console.log(chalk.bold.cyanBright(`\n❒⸺⸺⸺⸺【• SUB-BOT •】⸺⸺⸺⸺❒\n│\n│ ❍ ${userName} (+${path.basename(pathKurumiJadiBot)}) conectado exitosamente.\n│\n❒⸺⸺⸺【• CONECTADO •】⸺⸺⸺❒`))
 sock.isInit = true
 global.conns.push(sock)
-m?.chat ? await conn.sendMessage(m.chat, { text: isSubBotConnected(m.sender) ? `> @${m.sender.split('@')[0]}, ❐ Has registrado un nuevo _shadow_ *Sub-Bot* 👻` : `> ❀ Has registrado un nuevo *Sub-Bot!* [@${m.sender.split('@')[0]}]`, mentions: [m.sender] }, { quoted: m }) : ''
+m?.chat ? await conn.sendMessage(m.chat, { text: isSubBotConnected(m.sender) ? `🌾Genial, Ya eres parte de la familia Sub-Bots de Kurumi. @${m.sender.split('@')[0]}.` : `🌾Genial, Ya eres parte de la familia Sub-Bots de Kurumi. @${m.sender.split('@')[0]}.`, mentions: [m.sender] }, { quoted: m }) : ''
 }}
 setInterval(async () => {
 if (!sock.user) {
