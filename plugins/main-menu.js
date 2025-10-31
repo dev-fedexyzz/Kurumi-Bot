@@ -80,12 +80,11 @@ let handler = async (m, { conn, usedPrefix}) => {
 await m.react('🍮');
 
 await conn.sendMessage(m.chat, {
-  image: { url: imagen },
-  caption: finalMenu,
-  footer: '© 2025-2026 Kurumi 🌾',
+  text: finalMenu,
+  footer: '© 2025',
   buttons: [
     { buttonId: `usedPrefixcode`, buttonText:  displayText: '🔐 Código' , type: 1 ,
-     buttonId: `{usedPrefix}allmenu`, buttonText: { displayText: '📚 Menú completo' }, type: 1 }
+     buttonId: `{usedPrefix}reg fede.13`, buttonText: { displayText: '📝 Registro' }, type: 1 }
   ],
   headerType: 4,
   contextInfo: {
