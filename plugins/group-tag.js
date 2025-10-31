@@ -4,7 +4,7 @@ const handler = async (m, { conn, args }) => {
   try {
     const chatId = m.chat
     if (!chatId.endsWith('@g.us')) {
-      return await conn.sendMessage(chatId, { text: `𖣣ֶㅤ֯⌗ Este comando solo se puede usar en grupos.`, quoted: m })
+      return await conn.sendMessage(chatId, { text: '🌾 Este comando solo se puede usar en grupos.`, quoted: m })
     }
 
     const metadata = await conn.groupMetadata(chatId)
@@ -47,14 +47,14 @@ const handler = async (m, { conn, args }) => {
     }
 
     if (!messageToForward) {
-      return await conn.sendMessage(chatId, { text: `> ⌗ Debes responder a un mensaje o escribir algo para etiquetar al grupo.`, quoted: m })
+      return await conn.sendMessage(chatId, { text: `🌾 Debes responder a un mensaje o escribir algo para etiquetar al grupo.`, quoted: m })
     }
 
     await conn.sendMessage(chatId, { ...messageToForward, mentions: allMentions }, { quoted: m })
 
   } catch (error) {
     console.error('❌ Error en el comando tag:', error)
-    await conn.sendMessage(m.chat, { text: `𖣣ֶㅤ֯⌗ 🕸 Ocurrió un error al ejecutar el comando *tag*.`, quoted: m })
+    await conn.sendMessage(m.chat, { text: `𖣣ֶㅤ֯🪐 Ocurrió un error al ejecutar el comando *tag*.`, quoted: m })
   }
 }
 
