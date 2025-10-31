@@ -78,23 +78,10 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
 
-  const sections = [
-    {
-      title: 'SELECCIONE UNA CATEGORÍA 💥',
-      rows: [
-        { title: '📚 MENU COMPLETO', description: 'Ver todos los comandos disponibles', rowId: `${usedPrefix}allmenu`},
-        { title: '🔕 Eliminar registro', description: 'Eliminar tu registro del bot', rowId: `${usedPrefix}unreg`},
-        { title: '📡 Información del server', description: 'Estado y detalles del bot', rowId: `${usedPrefix}estado`},
-      ]
-}
-  ];
+  await m.react('🍮');
 
-  const listMessage = {
+  await conn.sendMessage(m.chat, {
     text: finalMenu,
-    footer: 'fedExz-Bails Bot © 2025',
-    title: '🧩 MENÚ PRINCIPAL',
-    buttonText: '📂 Abrir menú',
-    sections,
     contextInfo: {
       mentionedJid: [m.sender],
       externalAdReply: {
@@ -106,10 +93,8 @@ let handler = async (m, { conn, usedPrefix}) => {
         showAdAttribution: false
 }
 }
-};
+}, { quoted: m});
 
-  await m.react('🍮');
-await conn.sendMessage(m.chat, listMessage, { quoted: m});
   await delay(400);
 };
 
