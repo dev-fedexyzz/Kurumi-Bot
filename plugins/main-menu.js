@@ -87,21 +87,23 @@ let handler = async (m, { conn, usedPrefix}) => {
   let imagen = 'https://files.catbox.moe/c65bk7.jpg';
   let video = 'https://files.catbox.moe/nc2pre.mp4';
 
-await conn.sendMessage(m.chat, {
-  video: { url: video},
-  caption: finalMenu,
-  mimetype: 'video/mp4',
-  fileName: 'Kurumi-MD.mp4',
-  contextInfo: {
-    forwardingScore: 999,
-    isForwarded: true,
-    externalAdReply: {
-      title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
-      body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
-      thumbnailUrl: imagen,
-      mediaType: 1,
-      renderLargerThumbnail: true,
-      showAdAttribution: false
+  await m.react('🍮');
+
+  await conn.sendMessage(m.chat, {
+    video: { url: video},
+    caption: finalMenu,
+    mimetype: 'video/mp4',
+    fileName: 'Kurumi-MD.mp4',
+    contextInfo: {
+      forwardingScore: 999,
+      isForwarded: true,
+      externalAdReply: {
+        title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
+        body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
+        thumbnailUrl: imagen,
+        mediaType: 1,
+        renderLargerThumbnail: true,
+        showAdAttribution: false
 }
 }
 }, { quoted: m});
