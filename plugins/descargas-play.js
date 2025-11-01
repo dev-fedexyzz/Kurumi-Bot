@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 import yts from 'yt-search'
 
 let handler = async (m, { conn, usedPrefix, command, text }) => {
-  if (!text) return m.reply(`☕ Ingresa un texto o link de YouTube\n> *Ejemplo:* ${usedPrefix + command} ozuna`)
+  if (!text) return m.reply(`🍒 Ingresa un texto o link de YouTube\n> *Ejemplo:* ${usedPrefix + command} kurumi tokisaki de date a live`)
 
   try {
     let results, url
