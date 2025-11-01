@@ -34,19 +34,25 @@ const { chain } = lodash
 const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 
 let { say } = cfonts
-console.log(chalk.magentaBright('\n🍭  Iniciando...'))
-say('Kurumi - Md', {
-font: 'simple',
-align: 'left',
-gradient: ['yellow', 'white']
-})
-say('Made By dev-fedexyz', {
-font: 'console',
-align: 'center',
-colors: ['red', 'magenta', 'yellow']
-})
-protoType()
-serialize()
+console.log(chalk.cyanBright('\n🌾  Iniciando..'));
+
+say('Kurumi - MD', {
+  font: 'block',
+  align: 'center',
+  gradient: ['cyan', 'blue'],
+  transition: true
+});
+
+say('💻 Creado por dev-fedexyz 💻', {
+  font: 'chrome',
+  align: 'left',
+  colors: ['green', 'yellow', 'red']
+});
+
+console.log(chalk.greenBright('\n🪐 Inicializando módulos...'));
+
+protoType();
+serialize();
 
 global.__filename = function filename(pathURL = import.meta.url, rmPrefix = platform !== 'win32') {
 return rmPrefix ? /file:\/\/\//.test(pathURL) ? fileURLToPath(pathURL) : pathURL : pathToFileURL(pathURL).toString();
