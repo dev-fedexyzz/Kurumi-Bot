@@ -85,7 +85,7 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
   let imagen = 'https://files.catbox.moe/c65bk7.jpg';
-let video = 'https://files.catbox.moe/nc2pre.mp4';
+  let video = 'https://files.catbox.moe/nc2pre.mp4';
 
 await conn.sendMessage(m.chat, {
   video: { url: video},
