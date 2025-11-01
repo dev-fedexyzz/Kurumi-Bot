@@ -37,16 +37,15 @@ let { say } = cfonts
 console.log(chalk.cyanBright('\n🌾  Iniciando..'));
 
 say('Kurumi MD', {
-  font: 'block',
+  font: 'simple',
   align: 'center',
-  gradient: ['cyan', 'blue'],
-  transition: true
+  colors: ['cyan', 'blue', 'white']
 });
 
-say('Made by Dev-fedexyz', {
-  font: 'chrome',
+say('Made by dev-fedexyz', {
+  font: 'simple',
   align: 'left',
-  colors: ['green', 'yellow', 'red']
+  colors: ['gray', 'white', 'blue']
 });
 
 console.log(chalk.greenBright('\n🪐 Inicializando módulos...'));
