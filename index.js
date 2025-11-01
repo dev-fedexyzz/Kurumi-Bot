@@ -513,31 +513,29 @@ unlinkSync(filePath, err => {
 if (err) {
 console.log(chalk.gray(`\n📂 El archivo ${file} no se logró borrar.\n` + err))
 } else {
-console.log(chalk.gray(`\n🗑 ${file} fue eliminado correctamente.`))
+console.log(chalk.gray(`\n🗑 ${file} fue eliminado correctamente.`));
+}
+});
+}
+});
+}, 10 * 60 * 1000);
 
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
-const chalk = require('chalk');
+_quickTest().catch(console.error);
 
-const profileImageUrl = 'https://files.catbox.moe/c65bk7.jpg';
-const profileImagePath = path.join(__dirname, 'imagen.jpg');
+conn.on('open', async () => {
+  console.log('✅ Bot conectado a WhatsApp');
 
-async function updateProfilePicture() {
   try {
-    const res = await axios.get(profileImageUrl, { responseType: 'arraybuffer'});
-    fs.writeFileSync(profileImagePath, res.data);
-    await conn.updateProfilePicture(conn.user.id, fs.readFileSync(profileImagePath));
-    console.log(chalk.green('✅ Imagen de perfil actualizada.'));
+    const imageUrl = 'https://files.catbox.moe/c65bk7.jpg';
+    const response = await axios.get(imageUrl, { responseType: 'arraybuffer'});
+    const imageBuffer = Buffer.from(response.data, 'binary');
+
+    await conn.updateProfilePicture(conn.user.id, imageBuffer);
+    console.log('🖼 Foto de perfil actualizada automáticamente.');
 } catch (e) {
-    console.log(chalk.red('❌ Error al actualizar imagen de perfil.'));
+    console.error('❌ Error al actualizar la foto de perfil:', e);
 }
-}
-
-}})}
-})})})}, 10 * 60 * 1000)
-
-_quickTest().catch(console.error)
+});
 
 setInterval(async () => {
   if (stopped === 'close' ||!conn?.user) return;
@@ -547,7 +545,6 @@ setInterval(async () => {
   const statusText = `${packname} | 🍃 Uptime: ${formattedUptime}`;
 
   await conn.updateProfileStatus(statusText).catch(() => {});
-  await updateProfilePicture();
 }, 60000);
 
 function formatUptime(ms) {
@@ -560,10 +557,7 @@ function formatUptime(ms) {
 }
 
 function isValidPhoneNumber(number) {
-  const regex = /^\+?[1-9]\d{1,14}$/;
-  return regex.test(number);
-                  }
-try {
+  try {
 number = number.replace(/\s+/g, '')
 if (number.startsWith('+521')) {
 number = number.replace('+521', '+52');
