@@ -1,14 +1,17 @@
+
+import { delay } from "@whiskeysockets/baileys"
+
 const handler = async (msg, { conn }) => {
   try {
     const chatId = msg.key.remoteJid;
     const sender = (msg.key.participant || msg.key.remoteJid).replace(/[^0-9]/g, '');
     const isGroup = chatId.endsWith('@g.us');
 
-    await conn.sendMessage(chatId, { react: { text: '🌿', key: msg.key } });
+    await conn.sendMessage(chatId, { react: { text: '🕰️', key: msg.key } }); // Cambiado a emoji temático
 
     if (!isGroup) {
       await conn.sendMessage(chatId, {
-        text: `🌾 Este comando solo puede ejecutarse dentro de grupos.`,
+        text: `⏳ Este comando solo puede ser invocado en el tiempo presente (grupo).`, // Mensaje temático
         quoted: msg
       });
       return;
@@ -22,13 +25,24 @@ const handler = async (msg, { conn }) => {
     const args = messageText.trim().split(' ').slice(1);
     const extraMsg = args.join(' ');
 
-    let texto = `\`\`\`INVOCACIÓN\`\`\`\n\n`;
-    texto += `✐ Grupo: *${metadata.subject}*\n`;
-    texto += `ⴵ Miembros: *${participants.length}*\n`;
-    if (extraMsg) texto += `✰ Mensaje: *${extraMsg}*\n`;
-    texto += `\n❒ Menciones:\n`;
-    texto += participants.map(p => `» @${p.id.split('@')[0]}`).join('\n');
-    texto += `\n\n\n❒ Versión: *${vs}*`;
+    let texto = `\`\`\`ZAFKIEL: TIEMPO LLAMADO\`\`\`
+
+`; // Encabezado temático
+    texto += `✐ Grupo: *${metadata.subject}*
+`;
+    texto += `ⴵ Miembros: *${participants.length}*
+`;
+    if (extraMsg) texto += `✰ Mensaje: *${extraMsg}*
+`;
+    texto += `
+❒ Menciones:
+`;
+    texto += participants.map(p => `» @${p.id.split('@')[0]}`).join('
+');
+    texto += `
+
+
+❒ Versión: *${vs}*`; // Asumo que 'vs' es una variable definida en el contexto original
 
     await conn.sendMessage(chatId, {
       text: texto,
@@ -36,18 +50,18 @@ const handler = async (msg, { conn }) => {
     }, { quoted: msg });
 
   } catch (error) {
-    console.error('❌ Error en el comando tagall:', error);
+    console.error('❌ Error en el comando invocar:', error);
     await conn.sendMessage(msg.key.remoteJid, {
-      text: `❒ Ocurrió un error al ejecutar el comando *tagall*.`,
+      text: `🕰️ El tiempo se ha corrompido al intentar ejecutar el comando *invocar*.`, // Mensaje de error temático
       quoted: msg
     });
   }
 };
 
 handler.tags = ['grupo'];
-handler.help = ['invocar'];
+handler.help = ['invocar <mensaje> (Estilo Zafkiel)']; // Help temático
 handler.command = ['tagall', 'invocar', 'todos'];
 handler.group = true;
 handler.admin = true;
 
-export default handler;
+export default handler
