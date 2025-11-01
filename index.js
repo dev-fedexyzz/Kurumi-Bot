@@ -461,7 +461,7 @@ setInterval(async () => {
 
       const files = readdirSync(botPath);
       for (const file of files) {
-        if (!['creds.json', 'config.json', 'config.js'].includes(file)) {
+        if (!['creds.json', 'kurumi.json', 'kurumi.js'].includes(file)) {
           const filePath = join(botPath, file);
           const fileStat = statSync(filePath);
           try {
@@ -513,51 +513,12 @@ unlinkSync(filePath, err => {
 if (err) {
 console.log(chalk.gray(`\n📂 El archivo ${file} no se logró borrar.\n` + err))
 } else {
-console.log(chalk.gray(`\n🗑 ${file} fue eliminado correctamente.`));
-}
-});
-}
-});
-}, 10 * 60 * 1000);
-
-_quickTest().catch(console.error);
-
-conn.on('open', async () => {
-  console.log('✅ Bot conectado a WhatsApp');
-
-  try {
-    const imageUrl = 'https://files.catbox.moe/c65bk7.jpg';
-    const response = await axios.get(imageUrl, { responseType: 'arraybuffer'});
-    const imageBuffer = Buffer.from(response.data, 'binary');
-
-    await conn.updateProfilePicture(conn.user.id, imageBuffer);
-    console.log('🖼 Foto de perfil actualizada automáticamente.');
-} catch (e) {
-    console.error('❌ Error al actualizar la foto de perfil:', e);
-}
-});
-
-setInterval(async () => {
-  if (stopped === 'close' ||!conn?.user) return;
-
-  const uptimeMs = process.uptime() * 1000;
-  const formattedUptime = formatUptime(uptimeMs);
-  const statusText = `${packname} | 🍃 Uptime: ${formattedUptime}`;
-
-  await conn.updateProfileStatus(statusText).catch(() => {});
-}, 60000);
-
-function formatUptime(ms) {
-  const d = isNaN(ms)? '--': Math.floor(ms / 86400000);
-  const h = isNaN(ms)? '--': Math.floor(ms / 3600000) % 24;
-  const m = isNaN(ms)? '--': Math.floor(ms / 60000) % 60;
-  const s = isNaN(ms)? '--': Math.floor(ms / 1000) % 60;
-
-  return `${d}d ${h}h ${m}m ${s}s`;
-}
-
-function isValidPhoneNumber(number) {
-  try {
+console.log(chalk.gray(`\n🗑 ${file} fué eliminado correctamente.`))
+} }) }
+}) }) }) }, 10 * 60 * 1000)
+_quickTest().catch(console.error)
+async function isValidPhoneNumber(number) {
+try {
 number = number.replace(/\s+/g, '')
 if (number.startsWith('+521')) {
 number = number.replace('+521', '+52');
