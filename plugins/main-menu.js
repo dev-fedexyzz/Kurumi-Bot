@@ -48,19 +48,19 @@ let handler = async (m, { conn, usedPrefix}) => {
   let infoUser = `
 🍒 *_Hola!¡, Bienvenid@ Soy Kurumi-Bot..._*
 
-> 🍓 *Kurumi-MD* es un sistema automatizado inteligente, creado para interactuar a través de comandos sencillos.  
+> 🍓 *Kurumi-MD* es un sistema automatizado inteligente, creado para interactuar a través de comandos sencillos.
 
-> ⚙️ Te permite:  
-> • Descargar videos de múltiples plataformas  
-> • Buscar contenido directamente desde la web  
-> • Jugar y entretenerte dentro del chat  
+> ⚙️ Te permite:
+> • Descargar videos de múltiples plataformas
+> • Buscar contenido directamente desde la web
+> • Jugar y entretenerte dentro del chat
 
 ──────────────────────
 
 📚 *_Usuario_*:: @${m.sender.split('@')[0]}
-☕ *_Baileys_* :: *_fedExz-Bails_*
+☕ *_Baileys_*:: *_fedExz-Bails_*
 🍉 *_Premium_*:: ${premium}
-⏳ *_Tiempo activo_*:: ${uptime} 
+⏳ *_Tiempo activo_*:: ${uptime}
 ☁️ *_Grupos activos_*:: ${groupsCount}
 🌿 *_Comandos disponibles_*:: ${Object.keys(global.plugins).length}
 📡 *_Fecha actual_*:: \`${new Date().toLocaleString('es-ES')}\`
@@ -85,14 +85,15 @@ let handler = async (m, { conn, usedPrefix}) => {
 
   let finalMenu = infoUser + '\n\n' + menu.join('\n\n') + '\n' + after;
   let imagen = 'https://files.catbox.moe/c65bk7.jpg';
+  let video = 'https://files.catbox.moe/636djk.mp4';
 
   await m.react('🍮');
 
   await conn.sendMessage(m.chat, {
-    document: fs.readFileSync('./README.md'),
-    fileName: '🄺🅄🅁🅄🄼🄸 ꒰ 🌾 ꒱',
-    mimetype: 'application/pdf',
+    video: { url: video},
     caption: finalMenu,
+    mimetype: 'video/mp4',
+    fileName: 'Kurumi-MD.mp4',
     contextInfo: {
       forwardingScore: 999,
       isForwarded: true,
@@ -100,7 +101,8 @@ let handler = async (m, { conn, usedPrefix}) => {
         title: '꒰ ☕ ꒱ 🄺🅄🅁🅄🄼🄸‐🄼🄳',
         body: `𝖧𝗈𝗅𝖺 ${nombre}, ${saludo}`,
         thumbnailUrl: imagen,
-        mediaType: 1,
+        mediaType: 2,
+        sourceUrl: video,
         renderLargerThumbnail: true,
         showAdAttribution: false
 }
@@ -113,6 +115,6 @@ let handler = async (m, { conn, usedPrefix}) => {
 handler.help = ['menu'];
 handler.tags = ['main'];
 handler.command = ['menu', 'help', 'menú'];
-handler.register = true
+handler.register = true;
 
 export default handler;
