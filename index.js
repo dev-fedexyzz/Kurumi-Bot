@@ -461,7 +461,7 @@ setInterval(async () => {
 
       const files = readdirSync(botPath);
       for (const file of files) {
-        if (!['creds.json', 'kurumi.json', 'kurumi.js'].includes(file)) {
+        if (!['creds.json', 'config.json', 'config.js'].includes(file)) {
           const filePath = join(botPath, file);
           const fileStat = statSync(filePath);
           try {
