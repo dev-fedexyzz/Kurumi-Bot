@@ -43,9 +43,9 @@ say('Kurumi MD', {
 });
 
 say('Made by dev-fedexyz', {
-  font: 'simple',
+  font: 'tiny',
   align: 'left',
-  colors: ['gray', 'white', 'blue']
+  colors: ['white', 'gray', 'lightblue']
 });
 
 console.log(chalk.greenBright('\n🪐 Inicializando módulos...'));
