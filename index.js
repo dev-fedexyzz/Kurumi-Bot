@@ -43,7 +43,7 @@ say('Kurumi MD', {
 });
 
 say('Made by dev-fedexyz', {
-  font: 'tiny',
+  font: 'simple',
   align: 'left',
   colors: ['white', 'gray', 'lightblue']
 });
