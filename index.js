@@ -36,14 +36,14 @@ const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 let { say } = cfonts
 console.log(chalk.cyanBright('\n🌾  Iniciando..'));
 
-say('Kurumi - MD', {
+say('Kurumi MD', {
   font: 'block',
   align: 'center',
   gradient: ['cyan', 'blue'],
   transition: true
 });
 
-say('💻 Creado por dev-fedexyz 💻', {
+say('Made by Dev-fedexyz', {
   font: 'chrome',
   align: 'left',
   colors: ['green', 'yellow', 'red']
