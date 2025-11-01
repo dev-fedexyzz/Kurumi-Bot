@@ -31,7 +31,7 @@ global.currency = "Yenes"
 global.catalogo = fs.readFileSync('./settings/imagen/catalogo.jpg')
 
 
-global.gp1 = "https://chat.whatsapp.com/BeFAyDGgDIR7e1kEkdFs8d?mode=wwt"
+global.gp1 = "https://chat.whatsapp.com/F69BcYEwGiQKAM0cknS5Wn?mode=wwt"
 global.channel = "https://whatsapp.com/channel/0029VbBccU4545v2NVeKzN3U"
 global.github = "https://dev-fedexy.wuaze.com/"
 global.gmail = "fedelanyt20@gmail.com"
