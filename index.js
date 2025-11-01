@@ -513,11 +513,56 @@ unlinkSync(filePath, err => {
 if (err) {
 console.log(chalk.gray(`\n📂 El archivo ${file} no se logró borrar.\n` + err))
 } else {
-console.log(chalk.gray(`\n🗑 ${file} fué eliminado correctamente.`))
-} }) }
-}) }) }) }, 10 * 60 * 1000)
+console.log(chalk.gray(`\n🗑 ${file} fue eliminado correctamente.`))
+
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const chalk = require('chalk');
+
+const profileImageUrl = 'https://files.catbox.moe/c65bk7.jpg';
+const profileImagePath = path.join(__dirname, 'imagen.jpg');
+
+async function updateProfilePicture() {
+  try {
+    const res = await axios.get(profileImageUrl, { responseType: 'arraybuffer'});
+    fs.writeFileSync(profileImagePath, res.data);
+    await conn.updateProfilePicture(conn.user.id, fs.readFileSync(profileImagePath));
+    console.log(chalk.green('✅ Imagen de perfil actualizada.'));
+} catch (e) {
+    console.log(chalk.red('❌ Error al actualizar imagen de perfil.'));
+}
+}
+
+}})}
+})})})}, 10 * 60 * 1000)
+
 _quickTest().catch(console.error)
-async function isValidPhoneNumber(number) {
+
+setInterval(async () => {
+  if (stopped === 'close' ||!conn?.user) return;
+
+  const uptimeMs = process.uptime() * 1000;
+  const formattedUptime = formatUptime(uptimeMs);
+  const statusText = `${packname} | 🍃 Uptime: ${formattedUptime}`;
+
+  await conn.updateProfileStatus(statusText).catch(() => {});
+  await updateProfilePicture();
+}, 60000);
+
+function formatUptime(ms) {
+  const d = isNaN(ms)? '--': Math.floor(ms / 86400000);
+  const h = isNaN(ms)? '--': Math.floor(ms / 3600000) % 24;
+  const m = isNaN(ms)? '--': Math.floor(ms / 60000) % 60;
+  const s = isNaN(ms)? '--': Math.floor(ms / 1000) % 60;
+
+  return `${d}d ${h}h ${m}m ${s}s`;
+}
+
+function isValidPhoneNumber(number) {
+  const regex = /^\+?[1-9]\d{1,14}$/;
+  return regex.test(number);
+                  }
 try {
 number = number.replace(/\s+/g, '')
 if (number.startsWith('+521')) {
