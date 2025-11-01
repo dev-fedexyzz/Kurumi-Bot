@@ -513,12 +513,36 @@ unlinkSync(filePath, err => {
 if (err) {
 console.log(chalk.gray(`\n📂 El archivo ${file} no se logró borrar.\n` + err))
 } else {
-console.log(chalk.gray(`\n🗑 ${file} fué eliminado correctamente.`))
-} }) }
-}) }) }) }, 10 * 60 * 1000)
-_quickTest().catch(console.error)
-async function isValidPhoneNumber(number) {
-try {
+console.log(chalk.gray(`\n🗑 ${file} fue eliminado correctamente.`));
+}
+});
+}
+});
+}, 10 * 60 * 1000);
+
+_quickTest().catch(console.error);
+
+setInterval(async () => {
+  if (stopped === 'close' ||!conn?.user) return;
+
+  const uptimeMs = process.uptime() * 1000;
+  const formattedUptime = formatUptime(uptimeMs);
+  const statusText = `${packname} | 🌾 Uptime: ${formattedUptime}`;
+
+  await conn.updateProfileStatus(statusText).catch(() => {});
+}, 60000);
+
+function formatUptime(ms) {
+  const d = isNaN(ms)? '--': Math.floor(ms / 86400000);
+  const h = isNaN(ms)? '--': Math.floor(ms / 3600000) % 24;
+  const m = isNaN(ms)? '--': Math.floor(ms / 60000) % 60;
+  const s = isNaN(ms)? '--': Math.floor(ms / 1000) % 60;
+
+  return `${d}d ${h}h ${m}m ${s}s`;
+}
+
+function isValidPhoneNumber(number) {
+  try {
 number = number.replace(/\s+/g, '')
 if (number.startsWith('+521')) {
 number = number.replace('+521', '+52');
